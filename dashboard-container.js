@@ -3,43 +3,27 @@
 */
 'use-strict';
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import * as appPrefActions from '../../core/common/apppref-actions';
 import fuLogger from '../../core/common/fu-logger';
 import DashboardView from '../../memberView/dashboard/dashboard-view';
 
-class DashboardContainer extends Component {
-	constructor(props) {
-		super(props);
+function DashboardContainer() {
+	const session = useSelector((state) => state.session);
+	const appMenus = useSelector((state) => state.appMenus);
+	const appPrefs = useSelector((state) => state.appPrefs);
+	const dispatch = useDispatch();
+	const location = useLocation();
+	const navigate = useNavigate();
+	
 
-	}
-
-	componentDidMount() {
-		//this.props.actions.initMember();
-	}
-
-  render() {
-			fuLogger.log({level:'TRACE',loc:'DashboardContainer::render',msg:"Hi there"});
-      return (
-				<DashboardView/>
-			);
-  }
+	fuLogger.log({level:'TRACE',loc:'DashboardContainer::render',msg:"Hi there"});
+    return (
+		<DashboardView/>
+	);
+ 
 }
 
-DashboardContainer.propTypes = {
-	appPrefs: PropTypes.object,
-	lang: PropTypes.string,
-	actions: PropTypes.object
-};
 
-function mapStateToProps(state, ownProps) {
-  return {lang:state.lang, appPrefs:state.appPrefs};
-}
-
-function mapDispatchToProps(dispatch) {
-  return { actions:bindActionCreators(appPrefActions,dispatch) };
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(DashboardContainer);
+export default DashboardContainer;
