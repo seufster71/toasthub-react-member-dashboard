@@ -2,10 +2,10 @@
 * Author Edward Seufert
 */
 'use-strict';
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import * as appPrefActions from '../../core/common/apppref-actions';
+import { useNavigate, useLocation } from "react-router-dom";
+import * as actions from '../../core/common/apppref-actions';
 import fuLogger from '../../core/common/fu-logger';
 import DashboardView from '../../memberView/dashboard/dashboard-view';
 
