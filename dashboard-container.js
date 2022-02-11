@@ -10,6 +10,7 @@ import fuLogger from '../../core/common/fu-logger';
 import DashboardView from '../../memberView/dashboard/dashboard-view';
 
 function DashboardContainer() {
+	const itemState = useSelector((state) => state.memberdashboard);
 	const session = useSelector((state) => state.session);
 	const appMenus = useSelector((state) => state.appMenus);
 	const appPrefs = useSelector((state) => state.appPrefs);
@@ -20,7 +21,8 @@ function DashboardContainer() {
 
 	fuLogger.log({level:'TRACE',loc:'DashboardContainer::render',msg:"Hi there"});
     return (
-		<DashboardView/>
+		<DashboardView
+			itemState={itemState}/>
 	);
  
 }
