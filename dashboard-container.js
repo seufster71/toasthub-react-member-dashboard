@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import fuLogger from '../../core/common/fu-logger';
 import DashboardView from '../../memberView/dashboard/dashboard-view';
 
-function DashboardContainer() {
+function DashboardContainer({location,navigate}) {
 	const itemState = useSelector((state) => state.memberdashboard);
 	
 
